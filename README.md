@@ -1,2 +1,0 @@
-# remote-terminal
-Remote Terminal

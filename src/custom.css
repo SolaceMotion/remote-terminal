@@ -1,0 +1,57 @@
+body {
+  display: grid;
+  /* 900px is width of terminal */
+  grid-template-columns: 1fr 930px 1fr;
+  grid-template-rows: 250px 1fr;
+  align-items: center;
+  justify-items: center;
+
+  background: black;
+}
+
+#submit-connection {
+  display: inline-flex;
+  flex-direction: column;
+  grid-column: 2;
+  grid-row: 1;
+}
+
+#entry {
+  padding: 15px;
+  grid-column: 2;
+  grid-row: 2;
+  border: 1px solid rgb(255, 255, 255);
+  display: none;
+}
+
+#submit {
+  color: white;
+  padding: 10px;
+  border: 1px solid white;
+  background-color: transparent;
+  margin-bottom: 25px;
+  font-family: 'JetBrains Mono';
+  transition: background-color 250ms ease, color 250ms ease;
+}
+
+#submit:hover {
+  background-color: white;
+  color: black;
+}
+
+#host,
+#port {
+  color: white;
+  padding: 10px;
+  border: 1px solid white;
+  background-color: transparent;
+  margin-bottom: 20px;
+  font-family: 'JetBrains Mono';
+}
+
+#lhost,
+#lport {
+  font-size: 1.1rem;
+  color: white;
+  font-family: 'JetBrains Mono';
+}
