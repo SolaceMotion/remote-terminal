@@ -6,9 +6,24 @@ const pty = require('node-pty');
 const { createServer } = require('http');
 const { Server } = require('socket.io');
 
+const express = require('express');
+const cors = require('cors');
+
+const app = express();
+
+app.use(cors());
+
+const p = path.join(__dirname, '../remoteterm/dist');
+
+app.use(express.static(p));
+
+app.get('/', (req, res) => {
+  res.sendFile(path.join(p, '/index.html'));
+});
+
 const shell = os.platform() === 'linux' ? 'ssh' : 'powershell.exe';
 
-const httpServer = createServer();
+const httpServer = createServer(app);
 
 const io = new Server(httpServer, { cors: { origin: '*' } });
 
@@ -33,7 +48,7 @@ io.on('connection', (socket) => {
     });
 
     ptyProcess.on('data', (data) => {
-      process.stdout.write(data);
+      //process.stdout.write(data);
 
       if (
         data.includes('Bad') ||
